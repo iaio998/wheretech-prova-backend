@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Book;
+use App\Models\Author;
 
 class BookSeeder extends Seeder
 {
@@ -13,6 +14,11 @@ class BookSeeder extends Seeder
      */
     public function run(): void
     {
-        Book::factory()->count(1000)->create();
+        $authors = Author::pluck('id'); 
+
+        Book::factory(1000)->make()->each(function ($book) use ($authors) {
+            $book->author_id = $authors->random(); 
+            $book->save();
+        });
     }
 }

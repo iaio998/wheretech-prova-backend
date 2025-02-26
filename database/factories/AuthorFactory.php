@@ -19,8 +19,8 @@ class AuthorFactory extends Factory
     {
         $nationalities = ['IT', 'FR', 'EN', 'DE', 'ES', 'PT', 'RU', 'CN', 'JP', 'US'];
         return [
-            'firstname' => $this->faker->firstName(),
-            'lastname' => $this->faker->lastName(),
+            'firstname' => fake()->firstName(),
+            'lastname' => fake()->lastName(),
             'nationality' => $nationalities[array_rand($nationalities)],
         ];
     }

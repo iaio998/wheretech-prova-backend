@@ -18,12 +18,11 @@ class BookFactory extends Factory
      */
     public function definition(): array
     {
-        $authors = Author::all();
         return [
-            'title' => $this->faker->sentence(3),
-            'price' => $this->faker->randomFloat(2, 10, 50),
-            'stock' => $this->faker->numberBetween(1, 100),
-            'author_id' => $authors->random()->id,
+            'title' => fake()->sentence(3),
+            'price' => fake()->randomFloat(2, 10, 50),
+            'stock' => fake()->numberBetween(1, 100),
+            'author_id' => Author::inRandomOrder()->first()->id,
         ];
     }
 }
