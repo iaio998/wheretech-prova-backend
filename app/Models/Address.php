@@ -14,4 +14,9 @@ class Address extends Model
         'city',
         'zipcode',
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }
